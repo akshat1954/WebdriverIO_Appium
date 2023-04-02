@@ -92,7 +92,6 @@ describe('when interacting with form elements,', () => {
         await Gestures.checkIfDisplayedWithSwipeUp(await FormScreen.inActiveButton, 2);
         await NativeAlert.waitForIsShown(false);
         await FormScreen.tapOnInActiveButton();
-        await driver.pause(1000);
         await NativeAlert.waitForIsShown(false);
     });
 
