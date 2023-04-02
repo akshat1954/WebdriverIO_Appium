@@ -2,16 +2,7 @@ import { join } from 'path';
 import config from './wdio.shared.local.appium.conf';
 
 config.specs = [
-    //'./tests/specs/**/app*.spec.ts',
-    './tests/specs/**/app.default.selectionTab.spec.ts',
-    './tests/specs/**/app.formtab.availableClickable.spec.ts',
-    './tests/specs/**/app.inputBehaviour.spec.ts',
-    './tests/specs/**/app.keyboardAvailable.spec.ts',
-    './tests/specs/**/app.androidNativeAlert.spec.ts',
-    './tests/specs/**/app.inactiveButton.spec.ts',
-    './tests/specs/**/app.pickerElement.spec.ts',
-    './tests/specs/**/app.pickerElementsVisible.spec.ts',
-    './tests/specs/**/app.colorOnFormTab.spec.ts',
+    './tests/specs/**/app*.spec.ts',
 ];
 
 config.capabilities = [
