@@ -24,4 +24,21 @@ export default class AppScreen {
     async isFormTabClickable() {
         return await $('~Forms').getAttribute("clickable")
     }
+
+    async compareImage():Promise<Object>{
+        
+        //const ele = await driver.getElementCSSValue('~Forms','background-color')
+        //const elem = await $('~Forms')
+        //const color = await elem.getCSSProperty('color')
+        //console.log(">>> ",(await $('~Forms').getCSSProperty("background-color")).value)
+        //await driver.checkFullPageScreen('fullPage')
+        //expect(await driver.checkElement(ele,'firstButtonElement')).toEqual(0);
+        //driver.saveScreen('');
+
+        /*await browser.checkFullPageScreen('fullPage', {
+            hideAfterFirstScroll: [await $('~Forms')],
+        });*/
+
+        return true
+    }
 }

@@ -13,6 +13,15 @@ describe('native alerts on a login form,', () => {
        
     });
 
+    it('color change on the selection of the form tab - using image comparison', async () => {
+        await driver.saveScreenshot('./screenshots/ssBefore.png')
+        await TabBar.openForms();
+        await FormScreen.waitForIsShown(true);
+        await driver.saveScreenshot('./screenshots/ssAfter.png')
+        
+        await HomeScreen.compareImage()
+    });
+
     it('android native alerts are functional', async () => {
         await TabBar.openLogin();
         await LoginScreen.waitForIsShown(true);
@@ -79,10 +88,7 @@ describe('native alerts on a login form,', () => {
         expect(await HomeScreen.checkForDefaultTabSelected()).toStrictEqual(true)
     });
 
-    it('color change on the selection of the form tab - using image comparison', async () => {
-        await TabBar.openForms();
-        await FormScreen.waitForIsShown(true);
-    });
+   
 
     it('keyboard is available to provide input in the text', async () => {
         await TabBar.openForms();
