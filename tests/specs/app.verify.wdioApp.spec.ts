@@ -13,13 +13,13 @@ describe('native alerts on a login form,', () => {
        
     });
 
-    it('color change on the selection of the form tab - using image comparison', async () => {
-        await driver.saveScreenshot('./screenshots/ssBefore.png')
+    it('Validate that Inactive button is not interactable', async () => {
         await TabBar.openForms();
         await FormScreen.waitForIsShown(true);
-        await driver.saveScreenshot('./screenshots/ssAfter.png')
-        
-        await HomeScreen.compareImage()
+        await Gestures.checkIfDisplayedWithSwipeUp(await FormScreen.inActiveButton, 2);
+        await NativeAlert.waitForIsShown(false);
+        await FormScreen.tapOnInActiveButton();
+        expect(await NativeAlert.waitForIsShown(false)).toStrictEqual(true)
     });
 
     it('android native alerts are functional', async () => {
@@ -69,16 +69,6 @@ describe('native alerts on a login form,', () => {
         await expect(FormScreen.inputTextResult).toHaveTextContaining(text);
     });
 
-
-    it('Validate that Inactive button is not interactable', async () => {
-        await TabBar.openForms();
-        await FormScreen.waitForIsShown(true);
-        await Gestures.checkIfDisplayedWithSwipeUp(await FormScreen.inActiveButton, 2);
-        await NativeAlert.waitForIsShown(false);
-        await FormScreen.tapOnInActiveButton();
-        await NativeAlert.waitForIsShown(false);
-    });
-
     it('form tab is available for selection and clickable', async () => {
         expect(await HomeScreen.isFormTabSelectable()).toStrictEqual(true)
         expect(await HomeScreen.isFormTabClickable()).toStrictEqual("true")
@@ -101,6 +91,14 @@ describe('native alerts on a login form,', () => {
         if (await driver.isKeyboardShown()) {
             await FormScreen.tapOnInputTextResult();
         }
+    });
+
+    it('color change on the selection of the form tab - using image comparison', async () => {
+        await driver.saveScreenshot('./screenshots/ssBefore.png')
+        await TabBar.openForms();
+        await FormScreen.waitForIsShown(true);
+        await driver.saveScreenshot('./screenshots/ssAfter.png')
+        await expect(await HomeScreen.compareImage()).toStrictEqual(false);
     });
 
     afterEach(async () => {

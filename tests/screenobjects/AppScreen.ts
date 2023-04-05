@@ -1,3 +1,5 @@
+const imageToBase64 = require('image-to-base64');
+
 export default class AppScreen {
     private selector: string;
 
@@ -26,19 +28,22 @@ export default class AppScreen {
     }
 
     async compareImage():Promise<Object>{
+        /*
+        a.src = './screenshots/ssBefore.png';
+        b.src = './screenshots/ssAfter.png';
+        var a_base64 = getBase64Image(a);
+        var b_base64 = getBase64Image(b);
+        if (a_base64 === b_base64)
+        {
+            return true
+        }
+        else{ return false}
+        {
+        }*/
+
+        let a = imageToBase64('./screenshots/ssBefore.png')
+        let b = imageToBase64('./screenshots/ssAfter.png')
+        return a === b
         
-        //const ele = await driver.getElementCSSValue('~Forms','background-color')
-        //const elem = await $('~Forms')
-        //const color = await elem.getCSSProperty('color')
-        //console.log(">>> ",(await $('~Forms').getCSSProperty("background-color")).value)
-        //await driver.checkFullPageScreen('fullPage')
-        //expect(await driver.checkElement(ele,'firstButtonElement')).toEqual(0);
-        //driver.saveScreen('');
-
-        /*await browser.checkFullPageScreen('fullPage', {
-            hideAfterFirstScroll: [await $('~Forms')],
-        });*/
-
-        return true
     }
 }
